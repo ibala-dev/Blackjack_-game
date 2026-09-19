@@ -72,6 +72,7 @@ function renderGame() {
     else if (sum == 21) {
         message = "Wahoo! you have got  a blackjack"
         hasBlackJack = true
+        isAlive = false
 
     }
 
@@ -86,10 +87,12 @@ function renderGame() {
 
 
 function newCard() {
-    let card = getRandomCard()
-    cards.push(card)
-    sum += card
-    startGame()
+    if (isAlive && !hasBlackJack) {
+        let card = getRandomCard()
+        cards.push(card)
+        sum += card
+        renderGame()
+    }
 }
 
 console.log(message)
